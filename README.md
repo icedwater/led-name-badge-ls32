@@ -23,6 +23,25 @@ In both configurations, the badge identifies itself on the USB as
 
 ## Command Line Installation and Usage
 
+It is recommended to start a virtual environment for the Python packages. To do
+so using `venv`, please make sure `python3-venv` is installed:
+
+    sudo apt-get install python3-venv
+
+Then create and check the virtual environment:
+
+    python -m venv badge # creates a venv called badge in the current directory
+    . badge/bin/activate
+    deactivate  # run this to leave the environment
+
+If this worked, you should see a `(badge)` in your prompt showing the name of
+the virtual environment you're in, and that text will disappear once you have
+run `deactivate`.
+
+Make sure your virtual environment is activated when installing packages, so
+that your work stays within the environment and doesn't affect your main system.
+
+
 ### Required dependencies on Debian/Ubuntu Systems
 
     sudo pip install pyhidapi
