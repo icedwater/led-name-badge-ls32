@@ -19,13 +19,9 @@ In both configurations, the badge identifies itself on the USB as
 
     idVendor=0416, idProduct=5020
     Mfr=1, Product=2, SerialNumber=0
-    LSicroelectronics LS32 Custm HID
+    Winbond Electronics Corp. CH583
 
 ## Command Line Installation and Usage
-
-### Required dependencies on Arch Linux
-
-    sudo pacman -Syu python-pyusb python-hidapi
 
 ### Required dependencies on Debian/Ubuntu Systems
 
@@ -35,39 +31,6 @@ In both configurations, the badge identifies itself on the USB as
     sudo ln -s /usr/lib/x86_64-linux-gnu/libhidapi-hidraw.so.0  /usr/local/lib/
   or
     sudo apt install python3-usb python3-pil
-
-### Required dependencies on Mac Systems
-
-    sudo easy_install pip
-    pip install pyhidapi
-    pip install pillow
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
-    brew install hidapi
-  or
-    Try with `pip3 install pyhidapi`
-
-### Required dependencies on Windows 10
-
-    Download win/inf-wizard.exe to your desktop. Right click 'Run as Administrator'
-       -> Click 0x0416 0x5020 LS32 Custm HID
-       -> Next -> Next -> Documents LS32_Sustm_HID.inf -> Save (we don't need that file)
-       -> Install Now... -> Driver Install Complete -> OK
-
-    Download python from python.org
-      [x] install Launcher for all Users
-      [x] Add Python 3.7 to PATH
-       -> Click the 'Install Now ...' text message.
-
-    Run cmd.exe as Administrator, enter:
-      pip install pyusb
-      pip install pillow
-
-### Required dependencies on Windows 7
-
-    Download win/win32-bin-1.2.6.0.zip to your desktop. Extract.
-    Find the inf-wizard.exe in the bin folder. Right click 'Run as Administrator'
-    Then continue as with windows 10 above.
-
 
 #### Examples:
 
@@ -147,8 +110,6 @@ optional arguments:
 Example combining image and text:
  sudo ./led-badge-11x44.py "I:HEART2:you"
 </pre>
-
-
 
 ## Related References (for USB-Serial devices)
  * https://github.com/Caerbannog/led-mini-board
