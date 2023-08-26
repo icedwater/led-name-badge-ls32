@@ -44,12 +44,14 @@ that your work stays within the environment and doesn't affect your main system.
 
 ### Required dependencies on Debian/Ubuntu Systems
 
-    sudo pip install pyhidapi
-    sudo pip install pillow
+    pip install pyhidapi
+    pip install pillow
     sudo apt-get install libhidapi-hidraw0
     sudo ln -s /usr/lib/x86_64-linux-gnu/libhidapi-hidraw.so.0  /usr/local/lib/
+
   or
-    sudo apt install python3-usb python3-pil
+
+    sudo apt-get install python3-usb python3-pil
 
 #### Examples:
 
