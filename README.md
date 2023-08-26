@@ -95,7 +95,7 @@ prints some condensed help:
 
 <pre>
 usage: led-badge-11x44.py [-h] [-t TYPE] [-s SPEED] [-m MODE] [-b BLINK]
-			  [-a ANTS] [-p FILE] [-l]
+                          [-a ANTS] [-p FILE] [-l]
                           MESSAGE [MESSAGE ...]
 
 Upload messages or graphics to a 44x11 led badge via USB HID.
@@ -110,9 +110,9 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -t TYPE, --type TYPE
-			Type of display: supported values are 12x48 or
-			(default) 11x44. Rename the program to led-badge-12x48,
-			to switch the default.
+  Type of display: supported values are 12x48 or
+  (default) 11x44. Rename the program to led-badge-12x48,
+  to switch the default.
   -s SPEED, --speed SPEED
                         Scroll speed (Range 1..8). Up to 8 comma-seperated
                         values
