@@ -6,32 +6,6 @@
 # This is an upload tool for e.g.
 # https://www.sertronics-shop.de/computer/pc-peripheriegeraete/usb-gadgets/led-name-tag-11x44-pixel-usb
 # The font_11x44[] data was downloaded from such a device.
-#
-# Ubuntu install:
-# ---------------
-#    sudo apt-get install python3-usb
-#
-# Optional for image support:
-#    sudo apt-get install python3-pil
-#
-# Windows install:
-# ----------------
-##        https://sourceforge.net/projects/libusb-win32/ ->
-##            -> https://kent.dl.sourceforge.net/project/libusb-win32/libusb-win32-releases/1.2.6.0/libusb-win32-bin-1.2.6.0.zip
-##            cd libusb-win32-bin-1.2.6.0\bin
-## download inf-wizard.exe to your desktop. Right click 'Run as Administrator'
-#             -> Click 0x0416 0x5020 LS32 Custm HID
-#             -> Next -> Next -> Dokumente LS32_Sustm_HID.inf -> Save
-#             -> Install Now... -> Driver Install Complete -> OK
-# download python from python.org
-#            [x] install Launcher for all Users
-#            [x] Add Python 3.7 to PATH
-#             -> Click the 'Install Now ...' text message.
-#             -> Optionally click on the 'Disable path length limit' text message. This is always a good thing to do.
-# run cmd.exe as Administrator, enter:
-#        pip install pyusb
-#        pip install pillow
-#
 
 import sys, os, re, time, argparse
 from datetime import datetime
