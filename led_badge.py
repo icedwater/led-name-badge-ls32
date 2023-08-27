@@ -1,11 +1,13 @@
-#! /usr/bin/python3
+#! /usr/bin/env python3
 # -*- encoding: utf-8 -*-
-#
+
+"""
 # (C) 2019 juergen@fabmail.org
 #
 # This is an upload tool for e.g.
 # https://www.sertronics-shop.de/computer/pc-peripheriegeraete/usb-gadgets/led-name-tag-11x44-pixel-usb
 # The font_11x44[] data was downloaded from such a device.
+"""
 
 import sys, os, re, time, argparse
 from datetime import datetime
