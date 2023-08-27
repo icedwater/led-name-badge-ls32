@@ -12,10 +12,10 @@ from datetime import datetime
 from array import array
 try:
     if sys.version_info[0] < 3: raise Exception("prefer usb.core with python-2.x because of https://github.com/jnweiger/led-badge-ls32/issues/9")
-    import pyhidapi
-    pyhidapi.hid_init()
+    import hid
     have_pyhidapi = True
 except:
+    print("Failed to import hidapi, trying usb.core.")
     have_pyhidapi = False
     try:
         import usb.core
@@ -163,10 +163,10 @@ font_11x44 = (
 )
 
 charmap = u'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + \
-                    u'abcdefghijklmnopqrstuvwxyz' + \
-                    u'0987654321^ !"\0$%&/()=?` °\\}][{' + \
-                    u"@ ~ |<>,;.:-_#'+* " + \
-                    u"äöüÄÖÜßŠ"
+        u'abcdefghijklmnopqrstuvwxyz' + \
+        u'0987654321^ !"\0$%&/()=?` °\\}][{' + \
+        u"@ ~ |<>,;.:-_#'+* " + \
+        u"äöüÄÖÜßŠ"
 
 char_offset = {}
 for i in range(len(charmap)):
@@ -261,7 +261,7 @@ def bitmap_text(text):
     def colonrepl(m):
         name = m.group(1)
         if name == '':
-             return ':'
+            return ':'
         if re.match('^[0-9]*$', name):            # py3 name.isdecimal()
             return chr(int(name))
         if '.' in name:
@@ -412,15 +412,16 @@ parser.add_argument('--mode-help', action='version', help=argparse.SUPPRESS, ver
 """ % sys.argv[0])
 args = parser.parse_args()
 if have_pyhidapi:
-    devinfo = pyhidapi.hid_enumerate(0x0416, 0x5020)
-    #dev = pyhidapi.hid_open(0x0416, 0x5020)
+    devinfo = hid.enumerate(0x0416, 0x5020)
+    #dev = hid.open(0x0416, 0x5020)
 else:
     dev = usb.core.find(idVendor=0x0416, idProduct=0x5020)
+    print(f"Found device: {dev}.")
 
 if have_pyhidapi:
     if devinfo:
-        dev = pyhidapi.hid_open_path(devinfo[0].path)
-        print("using [%s %s] int=%d page=%s via pyHIDAPI" % (devinfo[0].manufacturer_string, devinfo[0].product_string, devinfo[0].interface_number, devinfo[0].usage_page))
+        dev = hid.device(devinfo[0])
+        # print("using [%s %s] int=%d page=%s via pyHIDAPI" % (devinfo[0].manufacturer_string, devinfo[0].product_string, devinfo[0].interface_number, devinfo[0].usage_page))
     else:
         print("No led tag with vendorID 0x0416 and productID 0x5020 found.")
         print("Connect the led tag and run this tool as root.")
@@ -478,11 +479,12 @@ if len(buf) > 8192:
     sys.exit(1)
 
 if have_pyhidapi:
-    pyhidapi.hid_write(dev, buf)
+    dev.open_path(devinfo[0]['path'])
+    dev.write(buf)
 else:
     for i in range(int(len(buf)/64)):
         time.sleep(0.1)
         dev.write(1, buf[i*64:i*64+64])
 
 if have_pyhidapi:
-    pyhidapi.hid_close(dev)
+    dev.close()

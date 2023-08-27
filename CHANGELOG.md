@@ -15,5 +15,6 @@
 | v0.10   | 2019-09-09 |   jw   | Support for loading monochrome images. Typos fixed.
 | v0.11   | 2019-09-29 |   jw   | New option --brightness added.
 | v0.12   | 2019-12-27 |   jw   | hint at pip3 -- as discussed in [this issue][issue 19]
+| v0.13   | 2023-08-27 |  iced  | Updated API for new hidapi version
 
 [issue 19]: https://github.com/jnweiger/led-name-badge-ls32/issues/19
